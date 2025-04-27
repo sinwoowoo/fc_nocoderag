@@ -1,240 +1,209 @@
-# Self-hosted AI starter kit
+# 자체 호스팅 AI 스타터 킷
 
-**Self-hosted AI Starter Kit** is an open-source Docker Compose template designed to swiftly initialize a comprehensive local AI and low-code development environment.
+**자체 호스팅 AI 스타터 킷**은 포괄적인 로컬 AI 및 로우코드(low-code) 개발 환경을 신속하게 초기화하도록 설계된 오픈 소스 Docker Compose 템플릿입니다.
 
-![n8n.io - Screenshot](https://raw.githubusercontent.com/n8n-io/self-hosted-ai-starter-kit/main/assets/n8n-demo.gif)
+![n8n.io - 스크린샷](https://raw.githubusercontent.com/n8n-io/self-hosted-ai-starter-kit/main/assets/n8n-demo.gif)
 
-Curated by <https://github.com/n8n-io>, it combines the self-hosted n8n
-platform with a curated list of compatible AI products and components to
-quickly get started with building self-hosted AI workflows.
+<https://github.com/n8n-io>에서 선별했으며, 자체 호스팅 n8n 플랫폼과 호환되는 AI 제품 및 구성 요소 목록을 결합하여 자체 호스팅 AI 워크플로우 구축을 빠르게 시작할 수 있도록 지원합니다.
 
-> [!TIP]
-> [Read the announcement](https://blog.n8n.io/self-hosted-ai/)
+> [!팁]
+> [발표 내용 읽기](https://blog.n8n.io/self-hosted-ai/)
 
-### What’s included
+### 포함된 내용
 
-✅ [**Self-hosted n8n**](https://n8n.io/) - Low-code platform with over 400
-integrations and advanced AI components
+✅ [**자체 호스팅 n8n**](https://n8n.io/) - 400개 이상의 통합 및 고급 AI 구성 요소를 갖춘 로우코드 플랫폼
 
-✅ [**Ollama**](https://ollama.com/) - Cross-platform LLM platform to install
-and run the latest local LLMs
+✅ [**Ollama**](https://ollama.com/) - 최신 로컬 LLM을 설치하고 실행하는 크로스 플랫폼 LLM 플랫폼
 
-✅ [**Qdrant**](https://qdrant.tech/) - Open-source, high performance vector
-store with an comprehensive API
+✅ [**Qdrant**](https://qdrant.tech/) - 포괄적인 API를 갖춘 오픈 소스 고성능 벡터 스토어
 
-✅ [**PostgreSQL**](https://www.postgresql.org/) -  Workhorse of the Data
-Engineering world, handles large amounts of data safely.
+✅ [**PostgreSQL**](https://www.postgresql.org/) - 데이터 엔지니어링 세계의 핵심 도구로, 대량의 데이터를 안전하게 처리
 
-✅ [**flowise**](https://flowiseai.com/) -  Open source low-code tool for developers to build customized LLM orchestration flow & AI agents
+✅ [**flowise**](https://flowiseai.com/) - 개발자가 맞춤형 LLM 오케스트레이션 플로우 및 AI 에이전트를 구축할 수 있는 오픈 소스 로우코드 도구
 
-### What you can build
+### 구축 가능한 것들
 
-⭐️ **AI Agents** for scheduling appointments
+⭐️ 약속 예약을 위한 **AI 에이전트**
 
-⭐️ **Summarize Company PDFs** securely without data leaks
+⭐️ 데이터 유출 없이 안전하게 **회사 PDF 요약**
 
-⭐️ **Smarter Slack Bots** for enhanced company communications and IT operations
+⭐️ 향상된 회사 커뮤니케이션 및 IT 운영을 위한 **더 스마트한 Slack 봇**
 
-⭐️ **Private Financial Document Analysis** at minimal cost
+⭐️ 최소 비용으로 **비공개 금융 문서 분석**
 
-## Installation
+## 설치
 
-### Cloning the Repository
+### 리포지토리 복제
 
 ```bash
 git clone https://github.com/aieeiee/fc_nocoderag.git
-cd self-hosted-ai-starter-kit
-```
-
-### Running n8n using Docker Compose
-
-#### For Nvidia GPU users
-
-```
-git clone https://github.com/aieeiee/fc_nocoderag.git
 cd fc_nocoderag/self-hosted-ai-starter-kit
+```
+
+### Docker Compose를 사용하여 n8n 실행
+
+> [!IMPORTANT]
+> Docker Compose 명령을 실행하기 전에 먼저 환경 설정을 구성해야 합니다.
+> `.env.example` 파일을 `.env` 파일로 복사하십시오. PowerShell에서는 다음 명령을 사용할 수 있습니다:
+> ```powershell
+> copy .env.example .env
+> ```
+> 그런 다음 필요에 따라 `.env` 파일 내의 설정을 검토하고 수정하십시오.
+
+#### Nvidia GPU 사용자용
+
+```bash
 docker compose --profile gpu-nvidia up
 ```
 
-> [!NOTE]
-> If you have not used your Nvidia GPU with Docker before, please follow the
-> [Ollama Docker instructions](https://github.com/ollama/ollama/blob/main/docs/docker.md).
+> [!참고]
+> 이전에 Docker와 함께 Nvidia GPU를 사용한 적이 없다면,
+> [Ollama Docker 지침](https://github.com/ollama/ollama/blob/main/docs/docker.md)을 따르십시오.
 
-### For AMD GPU users on Linux
+### Linux의 AMD GPU 사용자용
 
-```
-git clone https://github.com/aieeiee/fc_nocoderag.git
-cd fc_nocoderag/self-hosted-ai-starter-kit
+```bash
 docker compose --profile gpu-amd up
 ```
 
-#### For Mac / Apple Silicon users
+#### Mac / Apple Silicon 사용자용
 
-If you’re using a Mac with an M1 or newer processor, you can't expose your GPU
-to the Docker instance, unfortunately. There are two options in this case:
+M1 또는 최신 프로세서가 장착된 Mac을 사용하는 경우 안타깝게도 GPU를 Docker 인스턴스에 노출할 수 없습니다. 이 경우 두 가지 옵션이 있습니다.
 
-1. Run the starter kit fully on CPU, like in the section "For everyone else"
-   below
-2. Run Ollama on your Mac for faster inference, and connect to that from the
-   n8n instance
+1.  아래 "기타 사용자" 섹션처럼 CPU에서만 스타터 킷 실행
+2.  더 빠른 추론을 위해 Mac에서 Ollama를 실행하고 n8n 인스턴스에서 연결
 
-If you want to run Ollama on your mac, check the
-[Ollama homepage](https://ollama.com/)
-for installation instructions, and run the starter kit as follows:
+Mac에서 Ollama를 실행하려면 [Ollama 홈페이지](https://ollama.com/)에서 설치 지침을 확인하고 다음과 같이 스타터 킷을 실행하십시오.
 
-```
-git clone https://github.com/aieeiee/fc_nocoderag.git
-cd fc_nocoderag/self-hosted-ai-starter-kit
+```bash
 docker compose up
 ```
 
-##### For Mac users running OLLAMA locally
+##### Mac에서 로컬로 OLLAMA를 실행하는 사용자용
 
-If you're running OLLAMA locally on your Mac (not in Docker), you need to modify the OLLAMA_HOST environment variable
-in the n8n service configuration. Update the x-n8n section in your Docker Compose file as follows:
+Mac에서 로컬로 OLLAMA를 실행하는 경우(Docker 내부가 아님), n8n 서비스 구성에서 `OLLAMA_HOST` 환경 변수를 수정해야 합니다. Docker Compose 파일의 `x-n8n` 섹션을 다음과 같이 업데이트하십시오.
 
 ```yaml
 x-n8n: &service-n8n
-  # ... other configurations ...
+  # ... 기타 설정 ...
   environment:
-    # ... other environment variables ...
+    # ... 기타 환경 변수 ...
     - OLLAMA_HOST=host.docker.internal:11434
 ```
 
-Additionally, after you see "Editor is now accessible via: <http://localhost:5678/>":
+또한 "Editor is now accessible via: <http://localhost:5678/>" 메시지가 표시된 후:
 
-1. Head to <http://localhost:5678/home/credentials>
-2. Click on "Local Ollama service"
-3. Change the base URL to "http://host.docker.internal:11434/"
+1.  <http://localhost:5678/home/credentials> 로 이동합니다.
+2.  "Local Ollama service"를 클릭합니다.
+3.  기본 URL을 "http://host.docker.internal:11434/"로 변경합니다.
 
-#### For everyone else
+#### 기타 사용자
 
-```
+```bash
 git clone https://github.com/aieeiee/fc_nocoderag.git
 cd self-hosted-ai-starter-kit
 docker compose --profile cpu up
 ```
 
-## ⚡️ Quick start and usage
+## ⚡️ 빠른 시작 및 사용법
 
-The core of the Self-hosted AI Starter Kit is a Docker Compose file, pre-configured with network and storage settings, minimizing the need for additional installations.
-After completing the installation steps above, simply follow the steps below to get started.
+자체 호스팅 AI 스타터 킷의 핵심은 네트워크 및 스토리지 설정이 사전 구성된 Docker Compose 파일로, 추가 설치 필요성을 최소화합니다.
+위의 설치 단계를 완료한 후 아래 단계에 따라 시작하십시오.
 
-1. Open <http://localhost:5678/> in your browser to set up n8n. You’ll only
-   have to do this once.
-2. Open the included workflow:
-   <http://localhost:5678/workflow/srOnR8PAY3u4RSwb>
-3. Click the **Chat** button at the bottom of the canvas, to start running the workflow.
-4. If this is the first time you’re running the workflow, you may need to wait
-   until Ollama finishes downloading Llama3.2. You can inspect the docker
-   console logs to check on the progress.
+1.  브라우저에서 <http://localhost:5678/> 을 열어 n8n을 설정합니다. 이 작업은 한 번만 수행하면 됩니다.
+2.  포함된 워크플로우 열기:
+    <http://localhost:5678/workflow/srOnR8PAY3u4RSwb>
+3.  캔버스 하단의 **Chat** 버튼을 클릭하여 워크플로우 실행을 시작합니다.
+4.  워크플로우를 처음 실행하는 경우 Ollama가 Llama3.2 다운로드를 마칠 때까지 기다려야 할 수 있습니다. Docker 콘솔 로그를 확인하여 진행 상황을 확인할 수 있습니다.
 
-To open n8n at any time, visit <http://localhost:5678/> in your browser.
+언제든지 n8n을 열려면 브라우저에서 <http://localhost:5678/> 을 방문하십시오.
 
-With your n8n instance, you’ll have access to over 400 integrations and a
-suite of basic and advanced AI nodes such as
-[AI Agent](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/),
-[Text classifier](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.text-classifier/),
-and [Information Extractor](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.information-extractor/)
-nodes. To keep everything local, just remember to use the Ollama node for your
-language model and Qdrant as your vector store.
+n8n 인스턴스를 사용하면 400개 이상의 통합과
+[AI 에이전트](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent/),
+[텍스트 분류기](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.text-classifier/),
+[정보 추출기](https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.information-extractor/)와 같은
+기본 및 고급 AI 노드 모음에 액세스할 수 있습니다. 모든 것을 로컬로 유지하려면 언어 모델에는 Ollama 노드를 사용하고 벡터 저장소에는 Qdrant를 사용하는 것을 잊지 마십시오.
 
-> [!NOTE]
-> This starter kit is designed to help you get started with self-hosted AI
-> workflows. While it’s not fully optimized for production environments, it
-> combines robust components that work well together for proof-of-concept
-> projects. You can customize it to meet your specific needs
+> [!참고]
+> 이 스타터 킷은 자체 호스팅 AI 워크플로우를 시작하는 데 도움이 되도록 설계되었습니다. 프로덕션 환경에 완전히 최적화되지는 않았지만, 개념 증명(PoC) 프로젝트에 적합한 강력한 구성 요소들을 결합합니다. 특정 요구 사항에 맞게 사용자 정의할 수 있습니다.
 
-## Upgrading
+## 업그레이드
 
-* ### For Nvidia GPU setups:
+*   ### Nvidia GPU 설정용:
 
 ```bash
 docker compose --profile gpu-nvidia pull
 docker compose create && docker compose --profile gpu-nvidia up
 ```
 
-* ### For Mac / Apple Silicon users
+*   ### Mac / Apple Silicon 사용자용
 
-```
+```bash
 docker compose pull
 docker compose create && docker compose up
 ```
 
-* ### For Non-GPU setups:
+*   ### 비 GPU 설정용:
 
 ```bash
 docker compose --profile cpu pull
 docker compose create && docker compose --profile cpu up
 ```
 
-## 👓 Recommended reading
+## 👓 추천 자료
 
-n8n is full of useful content for getting started quickly with its AI concepts
-and nodes. If you run into an issue, go to [support](#support).
+n8n은 AI 개념 및 노드를 빠르게 시작하는 데 유용한 콘텐츠로 가득합니다. 문제가 발생하면 [지원](#지원) 섹션으로 이동하십시오.
 
-- [AI agents for developers: from theory to practice with n8n](https://blog.n8n.io/ai-agents/)
-- [Tutorial: Build an AI workflow in n8n](https://docs.n8n.io/advanced-ai/intro-tutorial/)
-- [Langchain Concepts in n8n](https://docs.n8n.io/advanced-ai/langchain/langchain-n8n/)
-- [Demonstration of key differences between agents and chains](https://docs.n8n.io/advanced-ai/examples/agent-chain-comparison/)
-- [What are vector databases?](https://docs.n8n.io/advanced-ai/examples/understand-vector-databases/)
+-   [개발자를 위한 AI 에이전트: 이론에서 n8n 실습까지](https://blog.n8n.io/ai-agents/)
+-   [튜토리얼: n8n에서 AI 워크플로우 구축하기](https://docs.n8n.io/advanced-ai/intro-tutorial/)
+-   [n8n의 Langchain 개념](https://docs.n8n.io/advanced-ai/langchain/langchain-n8n/)
+-   [에이전트와 체인의 주요 차이점 시연](https://docs.n8n.io/advanced-ai/examples/agent-chain-comparison/)
+-   [벡터 데이터베이스란 무엇인가?](https://docs.n8n.io/advanced-ai/examples/understand-vector-databases/)
 
-## 🎥 Video walkthrough
+## 🎥 비디오 둘러보기
 
-- [Installing and using Local AI for n8n](https://www.youtube.com/watch?v=xz_X2N-hPg0)
+-   [n8n용 로컬 AI 설치 및 사용](https://www.youtube.com/watch?v=xz_X2N-hPg0)
 
-## 🛍️ More AI templates
+## 🛍️ 더 많은 AI 템플릿
 
-For more AI workflow ideas, visit the [**official n8n AI template
-gallery**](https://n8n.io/workflows/?categories=AI). From each workflow,
-select the **Use workflow** button to automatically import the workflow into
-your local n8n instance.
+더 많은 AI 워크플로우 아이디어를 보려면 [**공식 n8n AI 템플릿 갤러리**](https://n8n.io/workflows/?categories=AI)를 방문하십시오. 각 워크플로우에서 **워크플로우 사용** 버튼을 선택하여 로컬 n8n 인스턴스로 워크플로우를 자동으로 가져옵니다.
 
-### Learn AI key concepts
+### 주요 AI 개념 학습
 
-- [AI Agent Chat](https://n8n.io/workflows/1954-ai-agent-chat/)
-- [AI chat with any data source (using the n8n workflow too)](https://n8n.io/workflows/2026-ai-chat-with-any-data-source-using-the-n8n-workflow-tool/)
-- [Chat with OpenAI Assistant (by adding a memory)](https://n8n.io/workflows/2098-chat-with-openai-assistant-by-adding-a-memory/)
-- [Use an open-source LLM (via Hugging Face)](https://n8n.io/workflows/1980-use-an-open-source-llm-via-huggingface/)
-- [Chat with PDF docs using AI (quoting sources)](https://n8n.io/workflows/2165-chat-with-pdf-docs-using-ai-quoting-sources/)
-- [AI agent that can scrape webpages](https://n8n.io/workflows/2006-ai-agent-that-can-scrape-webpages/)
+-   [AI 에이전트 채팅](https://n8n.io/workflows/1954-ai-agent-chat/)
+-   [모든 데이터 소스와 AI 채팅 (n8n 워크플로우 도구 사용)](https://n8n.io/workflows/2026-ai-chat-with-any-data-source-using-the-n8n-workflow-tool/)
+-   [OpenAI 어시스턴트와 채팅 (메모리 추가)](https://n8n.io/workflows/2098-chat-with-openai-assistant-by-adding-a-memory/)
+-   [오픈 소스 LLM 사용 (Hugging Face 경유)](https://n8n.io/workflows/1980-use-an-open-source-llm-via-huggingface/)
+-   [AI를 사용하여 PDF 문서와 채팅 (출처 인용)](https://n8n.io/workflows/2165-chat-with-pdf-docs-using-ai-quoting-sources/)
+-   [웹페이지 스크랩 가능한 AI 에이전트](https://n8n.io/workflows/2006-ai-agent-that-can-scrape-webpages/)
 
-### Local AI templates
+### 로컬 AI 템플릿
 
-- [Tax Code Assistant](https://n8n.io/workflows/2341-build-a-tax-code-assistant-with-qdrant-mistralai-and-openai/)
-- [Breakdown Documents into Study Notes with MistralAI and Qdrant](https://n8n.io/workflows/2339-breakdown-documents-into-study-notes-using-templating-mistralai-and-qdrant/)
-- [Financial Documents Assistant using Qdrant and](https://n8n.io/workflows/2335-build-a-financial-documents-assistant-using-qdrant-and-mistralai/) [Mistral.ai](http://mistral.ai/)
-- [Recipe Recommendations with Qdrant and Mistral](https://n8n.io/workflows/2333-recipe-recommendations-with-qdrant-and-mistral/)
+-   [세법 도우미](https://n8n.io/workflows/2341-build-a-tax-code-assistant-with-qdrant-mistralai-and-openai/)
+-   [MistralAI 및 Qdrant를 사용하여 문서를 학습 노트로 분해](https://n8n.io/workflows/2339-breakdown-documents-into-study-notes-using-templating-mistralai-and-qdrant/)
+-   [Qdrant 및 Mistral.ai를 사용한 금융 문서 도우미](https://n8n.io/workflows/2335-build-a-financial-documents-assistant-using-qdrant-and-mistralai/)
+-   [Qdrant 및 Mistral을 사용한 레시피 추천](https://n8n.io/workflows/2333-recipe-recommendations-with-qdrant-and-mistral/)
 
-## Tips & tricks
+## 팁 & 트릭
 
-### Accessing local files
+### 로컬 파일 액세스
 
-The self-hosted AI starter kit will create a shared folder (by default,
-located in the same directory) which is mounted to the n8n container and
-allows n8n to access files on disk. This folder within the n8n container is
-located at `/data/shared` -- this is the path you’ll need to use in nodes that
-interact with the local filesystem.
+자체 호스팅 AI 스타터 킷은 공유 폴더(기본적으로 동일한 디렉토리에 위치)를 생성하며, 이 폴더는 n8n 컨테이너에 마운트되어 n8n이 디스크의 파일에 액세스할 수 있도록 합니다. n8n 컨테이너 내 이 폴더의 위치는 `/data/shared` 이며, 로컬 파일 시스템과 상호 작용하는 노드에서 사용해야 하는 경로입니다.
 
-**Nodes that interact with the local filesystem**
+**로컬 파일 시스템과 상호 작용하는 노드**
 
-- [Read/Write Files from Disk](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.filesreadwrite/)
-- [Local File Trigger](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.localfiletrigger/)
-- [Execute Command](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executecommand/)
+-   [디스크에서 파일 읽기/쓰기](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.filesreadwrite/)
+-   [로컬 파일 트리거](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.localfiletrigger/)
+-   [명령 실행](https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.executecommand/)
 
-## 📜 License
+## 📜 라이선스
 
-This project is licensed under the Apache License 2.0 - see the
-[LICENSE](LICENSE) file for details.
+이 프로젝트는 Apache License 2.0에 따라 라이선스가 부여됩니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하십시오.
 
-## 💬 Support
+## 💬 지원
 
-Join the conversation in the [n8n Forum](https://community.n8n.io/), where you
-can:
+[n8n 포럼](https://community.n8n.io/)에서 대화에 참여하여 다음을 수행할 수 있습니다.
 
-- **Share Your Work**: Show off what you’ve built with n8n and inspire others
-  in the community.
-- **Ask Questions**: Whether you’re just getting started or you’re a seasoned
-  pro, the community and our team are ready to support with any challenges.
-- **Propose Ideas**: Have an idea for a feature or improvement? Let us know!
-  We’re always eager to hear what you’d like to see next.
+-   **작업 공유**: n8n으로 구축한 것을 자랑하고 커뮤니티의 다른 사람들에게 영감을 줍니다.
+-   **질문하기**: 이제 막 시작했든 숙련된 전문가든, 커뮤니티와 우리 팀은 모든 어려움을 지원할 준비가 되어 있습니다.
+-   **아이디어 제안**: 기능이나 개선에 대한 아이디어가 있습니까? 알려주세요! 다음에 보고 싶은 내용을 항상 듣고 싶어합니다.
