@@ -52,7 +52,7 @@ cd self-hosted-ai-starter-kit
 
 ```
 git clone https://github.com/aieeiee/fc_nocoderag.git
-cd self-hosted-ai-starter-kit
+cd fc_nocoderag/self-hosted-ai-starter-kit
 docker compose --profile gpu-nvidia up
 ```
 
@@ -64,7 +64,7 @@ docker compose --profile gpu-nvidia up
 
 ```
 git clone https://github.com/aieeiee/fc_nocoderag.git
-cd self-hosted-ai-starter-kit
+cd fc_nocoderag/self-hosted-ai-starter-kit
 docker compose --profile gpu-amd up
 ```
 
@@ -84,7 +84,7 @@ for installation instructions, and run the starter kit as follows:
 
 ```
 git clone https://github.com/aieeiee/fc_nocoderag.git
-cd self-hosted-ai-starter-kit
+cd fc_nocoderag/self-hosted-ai-starter-kit
 docker compose up
 ```
 
