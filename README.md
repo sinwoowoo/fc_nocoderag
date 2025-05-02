@@ -4,7 +4,7 @@
 	- 내 로컬 컴퓨터환경에서 실행 : self-hosted-ai-domain 폴더활용
 	- 내 웹도메인 환경에서 활용 (외부접근 가능) : self-hosted-ai-domain-kit 폴더활용
 
-## Refference 
+## Reference 
 - 교안 및 강의에 필요한 자료를 정리해 두었습니다.
 	- 각 교안 : [textbook]콘텐츠.pdf로 정리
 	- 참조논문 : [paper]이름.pdf로 정리
