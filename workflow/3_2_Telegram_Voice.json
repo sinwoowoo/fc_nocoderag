@@ -240,8 +240,8 @@
       "name": "Retrieve Long Term Memories",
       "type": "n8n-nodes-base.googleDocs",
       "position": [
-        -400,
-        560
+        -420,
+        540
       ],
       "typeVersion": 2,
       "alwaysOutputData": true,
@@ -510,30 +510,8 @@
       "name": "Sticky Note2"
     },
     {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        40,
-        200
-      ],
-      "id": "c29156db-1b3f-4016-b461-a649b31faa81",
-      "name": "Simple Memory"
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
-      "position": [
-        40,
-        540
-      ],
-      "id": "17612c55-e910-4767-9d3c-fe72b4f5cafe",
-      "name": "Simple Memory1"
-    },
-    {
       "parameters": {
-        "sseEndpoint": "https://legal-yeti-simply.ngrok-free.app/mcp/674f9511-fe37-4554-86f4-67ff6a592690/sse",
+        "sseEndpoint": "https://n8n.aidoingai.com/mcp/674f9511-fe37-4554-86f4-67ff6a592690/sse",
         "include": "selected",
         "includeTools": [
           "QA_chain",
@@ -549,6 +527,34 @@
       ],
       "id": "14a3263f-d221-4994-a7a9-c98d3d3cfc50",
       "name": "MCP Client"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.update_id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        20,
+        200
+      ],
+      "id": "514c4cf8-50c4-49ea-b1f8-e7f0b75abe19",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.body.message.from.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        20,
+        540
+      ],
+      "id": "5a2cffbf-17a4-4191-9827-26567cab86b7",
+      "name": "Simple Memory1"
     }
   ],
   "pinData": {},
@@ -751,6 +757,22 @@
         ]
       ]
     },
+    "MCP Client": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent_voice",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
     "Simple Memory": {
       "ai_memory": [
         [
@@ -772,29 +794,13 @@
           }
         ]
       ]
-    },
-    "MCP Client": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent_voice",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
     }
   },
   "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "5df61c57-55ff-4a91-9b86-746c10c6ea0a",
+  "versionId": "b28e7add-cc92-47d7-87a4-162ada8f5d6e",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "2165077c1768aeeb523a883d035617333b027aa817e1a70e9805379e851a968b"
